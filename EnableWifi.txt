@@ -1,0 +1,17 @@
+Enable Wifi in Ubuntu on a Macbook Pro
+--------------------------------------
+
+You Will Need:
+	- Ubuntu install CD/DVD or USB stick
+	
+Note: The package name will be different than the one listed here based on the version of Ubuntu you have installed and the architecture of your system.
+
+Step 1. Insert your install CD/DVD or USB stick.
+
+Step 2. Install "/pool/main/g/glibc/libc-dev-bin_2.23-0ubuntu9_amd64.deb" by double clicking the .deb package or execute "sudo dpkg -i /cdrom/pool/main/g/glibc/libc-dev-bin_2.23-0ubuntu9_amd64.deb".
+
+Step 3. Install "/pool/main/l/linux/linux-libc-dev_4.4.0-87.110_amd64.deb" by double clicking the .deb package for execute "sudo dpkg -i /pool/main/l/linux/linux-libc-dev_4.4.0-87.110_amd64.deb".
+
+Step 4. Install "/pool/main/g/glibc/libc6-dev_2.23-0ubuntu9_amd64.deb" by double clicking the .deb package or excecute "sudo dpkg -i /pool/main/g/glibc/libc6-dev_2.23-0ubuntu9_amd64.deb".
+
+Step 5. Install "/pool/restricted/b/bcmwl/bcmwl-kernel-source_6.30.223.271+bdcom-0ubuntu1~1.1_amd64.deb" by double clicking the .deb package or execute "sudo dpkg -i bcmwl-kernel-source_6.30.223.271+bdcom-0ubuntu1~1.1_amd64.deb".
