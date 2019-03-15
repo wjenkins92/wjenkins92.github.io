@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page.htm</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style type="text/css">
+			* { box-sizing: border-box; }
+			
+			#MainMenu
+			{
+				border: 1px solid red;
+				cursor: pointer;
+				display: block;
+				font-weight: bold;
+				list-style-position: inside;
+				list-style-type: none;
+				margin: 0px;
+				padding: 0px;
+				text-align: center;
+			}
+			
+			#MainMenu li
+			{
+				margin: 0px;
+				padding: 5px;
+			}
+			
+			#SubMenu
+			{
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#SubMenu li
+			{
+				border: 1px solid blue;
+				cursor: pointer;
+				display: block;
+				list-style-position: inside;
+				list-style-type: none;
+				margin: 0px;
+				padding: 5px;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			function OpenMenu ()
+			{
+				var menu = document.getElementById("SubMenu");
+				var menu_item = document.getElementById("OpenMenuCollapse");
+				
+				if (menu.style.display == "none")
+				{
+					menu.style.display = "initial";
+					menu_item.textContent = "▲ Menu ▲";
+				}
+				else if (menu.style.display == "initial")
+				{
+					menu.style.display = "none";
+					menu_item.textContent = "▼ Menu ▼";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="MainMenu">
+			<!-- ▼ (&#x25BC;) ▲ (&#x25B2;) -->
+			<li id="OpenMenuCollapse" onclick="OpenMenu();">▼ Menu ▼</li>
+				<ul id="SubMenu" style="display: none;">
+					<li>Home</li>
+					<li>About</li>
+					<li>Contact</li>
+				</ul>
+		</ul>
+	</body>
+</html>
