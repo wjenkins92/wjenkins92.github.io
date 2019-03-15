@@ -1,0 +1,97 @@
+<!--
+	Author: William Jenkins (billbilljr@gmail.com).
+	Date: May 6, 2018.
+	Description: Allows users to view colors in the HSL color
+				space in real time. See https://en.wikipedia.org/wiki/HSL_and_HSV
+				for more information. Written in HTML, CSS,
+				and JavaScript.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Color Chooser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			* { box-sizing: border-box; }
+			
+			body
+			{
+				font-family: sans-serif;
+				font-size: 12pt;
+			}
+			
+			.cell { display: table-cell; }
+			div { vertical-align: middle; }
+			#HueInput_Value { display: inline; }
+			input[type="range"] { width: 300px; }
+			.row { display: table-row; }
+			#SaturationInput_Value { display: inline; }
+			.tbl { display: inline-table; }
+			#LightnessInput_Value { display: inline; }
+		</style>
+		<script>
+			// An input was changed or we need to update the display of values.
+			function InputChanged ()
+			{
+				// Variables to hold hue, saturation, and lightness, respectively.
+				var h, s, l;
+				
+				// Get the hue, saturation, and lightness from their respective input controls.
+				h = document.getElementById("HueInput").value;
+				s = document.getElementById("SaturationInput").value;
+				l = document.getElementById("LightnessInput").value;
+				
+				// Output the value of each input control.
+				document.getElementById("HueInput_Value").innerHTML = h + "&deg;";
+				document.getElementById("SaturationInput_Value").innerHTML = s + "%";
+				document.getElementById("LightnessInput_Value").innerHTML = l + "%";
+				
+				// Set the background color.
+				document.body.style.backgroundColor = "hsl(" + h + ", " + s + "%, " + l + "%)";
+				
+				// Apply contrast to text color should the background color be
+				// too dark to see the text and vice versa.
+				if (l >= 0 && l <= 70)
+				{
+					document.body.style.color = "white";
+				}
+				else if (l > 70 && l <= 100)
+				{
+					document.body.style.color="black";
+				}
+			}
+			
+			// Generate a random integer between min (inclusive) and max (inclusive).
+			function randBetween(min, max)
+			{
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+			function init ()
+			{
+				/* Remove comment to enable random value on start.
+				document.getElementById("HueInput").value = randBetween(0, 360);
+				document.getElementById("SaturationInput").value = randBetween(0, 100);
+				document.getElementById("LightnessInput").value = randBetween(0, 100);
+				*/
+				
+				// Update the display.
+				InputChanged();
+			}
+		</script>
+	</head>
+	<body onload="init();">
+		<div class="tbl">
+			<div class="row">
+				<div class="cell">H:&nbsp;</div><div class="cell"><input type="range" id="HueInput" min="0" max="360" oninput="InputChanged();" /><div id="HueInput_Value"></div></div>
+			</div>
+			<div class="row">
+				<div class="cell">S:&nbsp;</div><div class="cell"><input type="range" id="SaturationInput" min="0" max="100" oninput="InputChanged();" /><div id="SaturationInput_Value"></div></div>
+						</div>
+			<div class="row">
+				<div class="cell">L:&nbsp;</div><div class="cell"><input type="range" id="LightnessInput" min="0" max="100" oninput="InputChanged();" /><div id="LightnessInput_Value"></div></div>
+			</div>
+		</div>
+	</body>
+</html>
